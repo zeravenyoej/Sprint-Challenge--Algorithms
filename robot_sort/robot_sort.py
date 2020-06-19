@@ -91,13 +91,42 @@ class SortingRobot:
         Returns True if the robot's light is on and False otherwise.
         """
         return self._light == "ON"
+    def comparison_process(self):
+        """
+        # compare item - if it's bigger:
+                # swap item
+                # move right
+            # if it's smaller:
+                # move right .
 
+        right now I'm not accounting for there being no item or the robot having nothing in its possession.
+        """
+        if self.compare_item() == -1:
+            self.swap_item()
+            self.move_right()
+        elif self.compare_item() == 1:
+            self.move_right()
+      def from_beg(self):
+          """"
+          when robot is at the beginning of the list and has one item 
+          """
+          # while in zero position at the start
+          self.swap_item()
+          self.move_right()
+          while self.can_move_right() == True:
+              self.comparison_process()
+    
     def sort(self):
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        self.from_beg()                          # while in zero position at the start
+        self.swap_item()                         # robot has biggest item and is in final position 
+        while self.can_move_left() == True:      # move robot to beginning
+            self.move_left()
+        self.from_beg()
+        
+
 
 
 if __name__ == "__main__":
