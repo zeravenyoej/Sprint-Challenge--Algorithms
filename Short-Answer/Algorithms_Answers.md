@@ -2,15 +2,28 @@
 
 ## Exercise I
 
-a)
-0(n) As the input size increase, the time it takes to complete the algorithm increases linearly. 
+a) O(n)
+As the input size increase, the time it takes to complete the algorithm increases linearly. 
+If n = 0, it recurses zero times. 
+If n = 1, it recurses one time. 
+If n = 2, it recurses two times.
+If n = 3, it recurses three times. 
+if n = 4, it recurses four times. etc. 
 
 
-b)
-I do not know. It's 0(n) times something.
+b) O(n * logn)
+sum = 0
+    for i in range(n):   <----0(n)>
+      j = 1
+      while j < n:   <------O(logn)>
+        j *= 2
+        sum += 1
 
-c) 
-O(N) As the input size increase, the time it takes to complete the algorithm increases linearly. 
+The outter loop is O(n) because its efficiency is directly proportional to the input size.
+The inner loop is O(logn) because it's cutting down the number of loops disproportionately. 
+
+c) O(n)
+The algorithm uses recursion but is still linear, as the computation time is entirely/proportionally/linearly depdendent on the input size. As the input size increase, the time it takes to complete the algorithm increases linearly. 
 
 
 ## Exercise II

@@ -93,41 +93,61 @@ class SortingRobot:
         return self._light == "ON"
     def comparison_process(self):
         """
-        # compare item - if it's bigger:
-                # swap item
-                # move right
-            # if it's smaller:
-                # move right .
+        Robot compares item. If robot in the item's possession is smaller, it swaps them and moves right.
+        If the robot's item is bigger, it moves right.
 
-        right now I'm not accounting for there being no item or the robot having nothing in its possession.
+        (right now I'm not accounting for there being no item or the robot having nothing in its possession.)
         """
         if self.compare_item() == -1:
             self.swap_item()
             self.move_right()
         elif self.compare_item() == 1:
             self.move_right()
-      def from_beg(self):
-          """"
-          when robot is at the beginning of the list and has one item 
-          """
-          # while in zero position at the start
-          self.swap_item()
-          self.move_right()
-          while self.can_move_right() == True:
-              self.comparison_process()
-    
+    def from_beg(self):
+        """"
+        when robot is at the beginning of the list and has one item 
+        """
+        self.swap_item()
+        self.move_right()
+        while self.can_move_right() == True:
+            self.comparison_process()
+
     def sort(self):
         """
         Sort the robot's list.
         """
-        self.from_beg()                          # while in zero position at the start
-        self.swap_item()                         # robot has biggest item and is in final position 
-        while self.can_move_left() == True:      # move robot to beginning
-            self.move_left()
-        self.from_beg()
+        swapped = True
+        while swapped:
+            swapped = False
+            if self.can_move_right == True:
+                if self.compare_item == -1:
+                    self.swap_item()
+                    swapped = True
+                    self.move_right()
+                elif self.compare_item == 1:
+                    self.move_right()
+            # else: 
+
+
+
+        # self.from_beg()                          # while in zero position at the start
+        # self.swap_item()                         # robot has biggest item and is in final position, then swaps 
+        # while self.can_move_left() == True:      # move robot to beginning
+        #     self.move_left()
+        # self.from_beg()
         
 
-
+# def bubble_sort(arr):
+#     swapped = True
+#     while swapped:
+#         swapped = False
+#         for i in range (0, len(arr) - 1):
+#             if arr[i] > arr[i+1]:
+#                 temp = arr[i]
+#                 arr[i] = arr[i+1]
+#                 arr[i+1] = temp
+#                 swapped = True
+#     return arr
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
