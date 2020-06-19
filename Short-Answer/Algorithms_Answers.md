@@ -28,16 +28,22 @@ The algorithm uses recursion but is still linear, as the computation time is ent
 
 ## Exercise II
 
-n = size of building
-e = number of eggs
-f = floor number
+The problem seems (deliberately) open ended. I wrote my proposed solution under the assumption that an answer for F already exists, and I am merely searching for it. 
 
+def get_min_of_f (building, floor):
+    low = 0                         -----> Get zeroth floor of building 
+    high = len(building)            -----> Get highest floor of building via len()
 
-def get_min_of_f (n, e, f)
+    while low < high              -----> loop through the possibilities of the best "f", but can only do so if high is bigger than low
+        mid = (high + low) // 2       -----> find the current middle floor
 
-found = false
+        if building[mid] == floor:    ------> if the middle of the building is equal to the floor, you've found it, and you return it
+            return building[mid]
 
-while floor is not found:
-    if 
+        elif building[mid] > floor:  ------> if the middle floor of the building is higher than the floor I'm searching for...
+            high = mid - 1            ------> ...I get rid of the "high"/top half of the buildings
 
+        elif building[mid] < floor:  --> if the middle floor of the building is lower than the floor I'm searching for...
+            low = mid + 1             ------> ...I get rid of the "low"/bottom half of the buildings
 
+runtime complexity: O(n) = The bigger the input size (aka the bigger the building), the longer it will take to search through it.
